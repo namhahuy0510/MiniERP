@@ -1,0 +1,29 @@
+@model IEnumerable<MiniERP.Models.Employee>
+
+<table class="table table-striped table-bordered">
+    <thead class="table-light">
+        <tr>
+            <th>Id</th>
+            <th>Họ tên</th>
+            <th>Ngày sinh</th>
+            <th>Vị trí</th>
+            <th>Lương</th>
+            <th>Ngày vào</th>
+            <th>Ngày kết thúc</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.Id</td>
+                <td>@emp.FullName</td>
+                <td>@emp.DateOfBirth.ToShortDateString()</td>
+                <td>@emp.Position</td>
+                <td>@emp.Salary</td>
+                <td>@emp.StartDate.ToShortDateString()</td>
+                <td>@emp.EndDate?.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -43,7 +43,20 @@ namespace MiniERP.Controllers
         {
             var emp = _context.Employees.Find(id);
             if (emp == null) return NotFound();
-            return View(emp); // tìm Views/Employee/Edit.cshtml
+            return View(emp); 
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Employee emp)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Update(emp);
+                _context.SaveChanges();
+                return RedirectToAction("EmployeeManagement");
+            }
+            return View(emp);
         }
 
         [HttpGet]
@@ -51,7 +64,7 @@ namespace MiniERP.Controllers
         {
             var emp = _context.Employees.Find(id);
             if (emp == null) return NotFound();
-            return View(emp); // tìm Views/Employee/Delete.cshtml
+            return View(emp); 
         }
 
         [HttpPost, ActionName("Delete")]
@@ -65,5 +78,18 @@ namespace MiniERP.Controllers
             return RedirectToAction("EmployeeManagement");
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Search(string keyword)
+        {
+            var employees = _context.Employees.AsQueryable();
+
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                employees = employees.Where(e => (e.FullName ?? "").Contains(keyword)
+                                              || (e.Position ?? "").Contains(keyword));
+            }
+
+            return PartialView("EmployeeSearchResults", await employees.ToListAsync());
+        }
     }
 }
