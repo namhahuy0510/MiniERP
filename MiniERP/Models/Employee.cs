@@ -15,5 +15,12 @@ namespace MiniERP.Models
         public DateTime StartDate { get; set; }
 
         public DateTime? EndDate { get; set; }
+
+
+        public ICollection<Attendance>? Attendances { get; set; }
+
+        public bool? IsPresent { get; set; }
+
+        public string? AvatarUrl { get; set; }
     }
 }

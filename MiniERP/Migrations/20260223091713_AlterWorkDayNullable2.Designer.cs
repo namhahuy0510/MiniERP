@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MiniERP.Data;
 
@@ -11,9 +12,11 @@ using MiniERP.Data;
 namespace MiniERP.Migrations
 {
     [DbContext(typeof(MiniERPContext))]
-    partial class MiniERPContextModelSnapshot : ModelSnapshot
+    [Migration("20260223091713_AlterWorkDayNullable2")]
+    partial class AlterWorkDayNullable2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
