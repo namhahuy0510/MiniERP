@@ -1,0 +1,37 @@
+﻿@model IEnumerable<MiniERP.Models.Employee>
+
+@{
+    ViewData["Title"] = "Employee Management";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Employee Management</h1>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Full Name</th>
+            <th>Date of Birth</th>
+            <th>Position</th>
+            <th>Salary</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.Id</td>
+                <td>@emp.FullName</td>
+                <td>@emp.DateOfBirth.ToShortDateString()</td>
+                <td>@emp.Position</td>
+                <td>@emp.Salary</td>
+                <td>@emp.StartDate.ToShortDateString()</td>
+                <td>@emp.EndDate?.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>

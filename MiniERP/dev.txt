@@ -1,0 +1,19 @@
+# EF Core Migration Commands
+
+# 1. Tạo migration mới (ghi nhận thay đổi trong model)
+dotnet ef migrations add AddStartEndDateToEmployee
+# (AddStartEndDateToEmployee là tên migration, đặt sao cho dễ nhớ)
+
+# 2. Áp dụng migration vào database
+dotnet ef database update
+
+# 3. Xóa migration cuối cùng (nếu chưa update DB)
+dotnet ef migrations remove
+
+# 4. Rollback database về migration trước đó
+dotnet ef database update PreviousMigrationName
+
+# 5. Xóa toàn bộ migrations (xóa thư mục Migrations/ thủ công)
+# Sau đó tạo lại migration mới từ đầu
+dotnet ef migrations add InitMigration
+dotnet ef database update
