@@ -29,10 +29,10 @@
                     </ul>
 
                     <ul class="navbar-nav">
-                        @if (User.Identity.IsAuthenticated)
+                        @if (User.Identity?.IsAuthenticated == true)
                         {
                             <li class="nav-item">
-                                <span class="nav-link text-dark">Xin chào @User.Identity.Name</span>
+                                <span class="nav-link text-dark">Xin chào @User.Identity?.Name</span>
                             </li>
                             <li class="nav-item">
                                 <form asp-controller="Account" asp-action="Logout" method="get" class="form-inline">

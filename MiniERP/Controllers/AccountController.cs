@@ -20,7 +20,7 @@ namespace MyApp.Controllers
 
         // GET: /Account/Login
         [HttpGet]
-        [AllowAnonymous] // cho phép truy cập không cần login
+        [AllowAnonymous]
         public IActionResult Login()
         {
             return View();
@@ -58,9 +58,7 @@ namespace MyApp.Controllers
 
             if (result.Succeeded)
             {
-                // gán role mặc định
                 await _userManager.AddToRoleAsync(user, "User");
-
                 await _signInManager.SignInAsync(user, isPersistent: false);
                 return RedirectToAction("Index", "Home");
             }
@@ -74,7 +72,7 @@ namespace MyApp.Controllers
 
         // GET: /Account/Logout
         [HttpGet]
-        [Authorize] // chỉ user đã đăng nhập mới được logout
+        [Authorize]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();

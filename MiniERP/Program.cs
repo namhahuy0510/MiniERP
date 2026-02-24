@@ -18,6 +18,12 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<MiniERPContext>()
     .AddDefaultTokenProviders();
 
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.AccessDeniedPath = "/Account/AccessDenied";
+    options.LoginPath = "/Account/Login";
+});
+
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
@@ -58,7 +64,7 @@ app.Use(async (context, next) =>
         }
         else
         {
-            context.Response.Redirect("/dang-nhap");
+            context.Response.Redirect("/Account/Login");
             return;
         }
     }
