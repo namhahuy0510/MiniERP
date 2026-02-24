@@ -86,5 +86,45 @@ namespace MyApp.Controllers
         {
             return View();
         }
+
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> SeedAdmin(string userName, string password)
+        {
+            var roleManager = HttpContext.RequestServices.GetRequiredService<RoleManager<IdentityRole>>();
+            var userManager = HttpContext.RequestServices.GetRequiredService<UserManager<ApplicationUser>>();
+
+            // Tạo role Admin nếu chưa có
+            if (!await roleManager.RoleExistsAsync("Admin"))
+            {
+                await roleManager.CreateAsync(new IdentityRole("Admin"));
+            }
+
+            // Tạo user Admin nếu chưa có
+            var adminUser = await userManager.FindByNameAsync(userName);
+            if (adminUser == null)
+            {
+                adminUser = new ApplicationUser
+                {
+                    UserName = userName,
+                    Email = $"{userName}@example.com",
+                    EmailConfirmed = true
+                };
+
+                var result = await userManager.CreateAsync(adminUser, password);
+                if (result.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(adminUser, "Admin");
+                    return Ok($"Admin user {userName} created successfully.");
+                }
+
+                return BadRequest(result.Errors);
+            }
+
+            return Ok($"Admin user {userName} already exists.");
+        }
+
+
     }
 }

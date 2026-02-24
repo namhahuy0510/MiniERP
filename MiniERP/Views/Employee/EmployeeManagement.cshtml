@@ -7,7 +7,10 @@
 
 <div class="text-center mb-4">
     <h1 class="display-4">Trang quản lý nhân viên</h1>
-    <a asp-action="Create" class="btn btn-primary">Thêm nhân viên mới</a>
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-action="Create" class="btn btn-primary">Thêm nhân viên mới</a>
+    }
 </div>
 
 <div class="mb-3 d-flex justify-content-start">
@@ -44,8 +47,11 @@
                     <td>@emp.StartDate.ToShortDateString()</td>
                     <td>@emp.EndDate?.ToShortDateString()</td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@emp.Id" class="btn btn-sm btn-warning me-1">Sửa</a>
-                        <a asp-action="Delete" asp-route-id="@emp.Id" class="btn btn-sm btn-danger">Xóa</a>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@emp.Id" class="btn btn-sm btn-warning me-1">Sửa</a>
+                            <a asp-action="Delete" asp-route-id="@emp.Id" class="btn btn-sm btn-danger">Xóa</a>
+                        }
                     </td>
                 </tr>
                 stt++;
