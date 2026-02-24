@@ -37,6 +37,28 @@ app.UseAuthorization();
 
 app.MapStaticAssets();
 
+app.Use(async (context, next) =>
+{
+    var path = context.Request.Path.Value?.ToLower();
+
+    if (string.IsNullOrEmpty(path) || path == "/")
+    {
+        if (context.User.Identity?.IsAuthenticated == true)
+        {
+            context.Response.Redirect("/Home/Index");
+            return;
+        }
+        else
+        {
+            context.Response.Redirect("/dang-nhap");
+            return;
+        }
+    }
+
+    await next();
+});
+
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}")

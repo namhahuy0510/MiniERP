@@ -2,9 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using MiniERP.Data;
 using MiniERP.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MiniERP.Controllers
 {
+    [Authorize] // bắt buộc phải đăng nhập mới vào được controller này
     public class EmployeeController : Controller
     {
         private readonly MiniERPContext _context;
@@ -13,19 +15,25 @@ namespace MiniERP.Controllers
         {
             _context = context;
         }
+
+        // User nào đăng nhập cũng xem được danh sách
+        [HttpGet]
         public IActionResult EmployeeManagement()
         {
             var employees = _context.Employees.ToList();
             return View(employees);
         }
 
+        // Chỉ Admin mới được tạo nhân viên
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Employee emp)
         {
@@ -38,7 +46,9 @@ namespace MiniERP.Controllers
             return View(emp);
         }
 
+        // Chỉ Admin mới được sửa
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult Edit(int id)
         {
             var emp = _context.Employees.Find(id);
@@ -47,6 +57,7 @@ namespace MiniERP.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Employee emp)
         {
@@ -59,7 +70,9 @@ namespace MiniERP.Controllers
             return View(emp);
         }
 
+        // Chỉ Admin mới được xóa
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             var emp = _context.Employees.Find(id);
@@ -68,6 +81,7 @@ namespace MiniERP.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
@@ -78,6 +92,7 @@ namespace MiniERP.Controllers
             return RedirectToAction("EmployeeManagement");
         }
 
+        // Tìm kiếm: chỉ cần đăng nhập, không phân role
         [HttpGet]
         public async Task<IActionResult> Search(string keyword)
         {
