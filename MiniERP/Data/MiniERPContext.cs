@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MiniERP.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace MiniERP.Data
 {
-    public class MiniERPContext : DbContext
+    public class MiniERPContext : IdentityDbContext<ApplicationUser>
     {
         public MiniERPContext(DbContextOptions<MiniERPContext> options) : base(options) { }
 

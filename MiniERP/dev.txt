@@ -17,3 +17,5 @@ dotnet ef database update PreviousMigrationName
 # Sau đó tạo lại migration mới từ đầu
 dotnet ef migrations add InitMigration
 dotnet ef database update
+
+# 6. Lenh dotnet xem cac thu vien da cai (package): dotnet list package

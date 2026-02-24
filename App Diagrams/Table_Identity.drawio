@@ -1,0 +1,49 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 Edg/145.0.0.0" version="29.5.2">
+  <diagram name="Page-1" id="LPfFK6XBCFmeaYDIP1k9">
+    <mxGraphModel dx="1818" dy="746" grid="1" gridSize="7" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="q8Rsuw_u5KQpUDJSy3MH-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="AspNetUsers&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="-14" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="q8Rsuw_u5KQpUDJSy3MH-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="AspNetRoles&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="196" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="q8Rsuw_u5KQpUDJSy3MH-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Tạo quyền&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="196" y="266" as="geometry" />
+        </mxCell>
+        <mxCell id="q8Rsuw_u5KQpUDJSy3MH-6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Tạo tài khoản" vertex="1">
+          <mxGeometry height="60" width="120" x="-14" y="266" as="geometry" />
+        </mxCell>
+        <mxCell id="q8Rsuw_u5KQpUDJSy3MH-7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="AspNetRoles&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="406" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="q8Rsuw_u5KQpUDJSy3MH-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Gán quyền cho tài khoản&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="406" y="266" as="geometry" />
+        </mxCell>
+        <mxCell id="q8Rsuw_u5KQpUDJSy3MH-9" edge="1" parent="1" source="q8Rsuw_u5KQpUDJSy3MH-2" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="q8Rsuw_u5KQpUDJSy3MH-6" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-105" y="260" as="sourcePoint" />
+            <mxPoint x="-55" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q8Rsuw_u5KQpUDJSy3MH-10" edge="1" parent="1" source="q8Rsuw_u5KQpUDJSy3MH-4" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="q8Rsuw_u5KQpUDJSy3MH-5" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="255.5" y="200" as="sourcePoint" />
+            <mxPoint x="255.5" y="266" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q8Rsuw_u5KQpUDJSy3MH-11" edge="1" parent="1" source="q8Rsuw_u5KQpUDJSy3MH-7" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="q8Rsuw_u5KQpUDJSy3MH-8" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="315" y="238" as="sourcePoint" />
+            <mxPoint x="315" y="304" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q8Rsuw_u5KQpUDJSy3MH-12" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;3 Bảng này để quản lý user, role, phân quyền&amp;nbsp;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="63" width="476" x="35" y="392" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
