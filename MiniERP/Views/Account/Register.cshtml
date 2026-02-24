@@ -1,0 +1,38 @@
+@{
+    ViewData["Title"] = "Trang đăng ký";
+}
+
+<div style="display:flex; justify-content:center; align-items:center; height:600px;">
+    <div style="width:400px; padding:20px; border:1px solid #ccc; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1); background:#fff;">
+        <h3 style="text-align:center; margin-bottom:20px;">Đăng ký tài khoản</h3>
+        
+        <form asp-action="Register" method="post">
+            <div class="mb-3">
+                <label for="username" class="form-label">Tên đăng nhập</label>
+                <input type="text" id="username" name="username" 
+                    class="form-control" 
+                    style="width: 100%; padding: 12px; font-size: 14px; border-radius: 6px; border: 1px solid #ccc;" 
+                    required />
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Mật khẩu</label>
+                <input type="password" id="password" name="password" 
+                    class="form-control" 
+                    style="width: 100%; padding: 12px; font-size: 14px; border-radius: 6px; border: 1px solid #ccc;" 
+                    required />
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Đăng ký</button>
+        </form>
+
+
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div style="color:red; margin-top:15px;">
+                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <p>@error.ErrorMessage</p>
+                }
+            </div>
+        }
+    </div>
+</div>
