@@ -2,22 +2,23 @@ using Microsoft.EntityFrameworkCore;
 using MiniERP.Data;
 using MiniERP.Models;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Đăng ký dịch vụ MVC
 builder.Services.AddControllersWithViews();
 
+// Kết nối database
 builder.Services.AddDbContext<MiniERPContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Identity
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<MiniERPContext>()
     .AddDefaultTokenProviders();
 
+// Cấu hình cookie cho Identity
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.AccessDeniedPath = "/Account/AccessDenied";
@@ -26,6 +27,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 var app = builder.Build();
 
+// Xử lý lỗi
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -37,11 +39,15 @@ app.UseHttpsRedirection();
 // Phục vụ file tĩnh từ wwwroot
 app.UseStaticFiles();
 
-// Nếu có thư mục riêng (ví dụ "Images"), thêm như sau:
+// Phục vụ file tĩnh từ thư mục Images
+var imagesPath = Path.Combine(builder.Environment.ContentRootPath, "Images");
+if (!Directory.Exists(imagesPath))
+{
+    Directory.CreateDirectory(imagesPath);
+}
 app.UseStaticFiles(new StaticFileOptions
 {
-    FileProvider = new PhysicalFileProvider(
-        Path.Combine(builder.Environment.ContentRootPath, "Images")),
+    FileProvider = new PhysicalFileProvider(imagesPath),
     RequestPath = "/Images"
 });
 
