@@ -18,3 +18,5 @@
 ## Bang phan quyen nguoi dung (user, role, author)
 <img width="603" height="371" alt="image" src="https://github.com/user-attachments/assets/5987117d-17af-4268-ae3a-bdd0a7f38821" />
 
+## Deploy Railway cloud
+<img width="1916" height="1039" alt="image" src="https://github.com/user-attachments/assets/38be3406-cae3-4f29-b32f-2c5e9a4c9460" />
