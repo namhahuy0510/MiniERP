@@ -25,6 +25,13 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.LoginPath = "/Account/Login";
 });
 
+// ⚡ Cấu hình Kestrel để nghe đúng cổng
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5000"; // Railway cấp PORT, local mặc định 5000
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(int.Parse(port));
+});
+
 var app = builder.Build();
 
 // Xử lý lỗi
