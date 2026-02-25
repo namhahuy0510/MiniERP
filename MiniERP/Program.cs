@@ -32,7 +32,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 });
 
 // ⚡ Cấu hình Kestrel để nghe đúng cổng
-var port = Environment.GetEnvironmentVariable("PORT") ?? "5000"; // Railway cấp PORT, local mặc định 5000
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5000"; 
 builder.WebHost.ConfigureKestrel(options =>
 {
     options.ListenAnyIP(int.Parse(port));
@@ -90,6 +90,35 @@ app.Use(async (context, next) =>
 
     await next();
 });
+
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+
+    if (!await roleManager.RoleExistsAsync("Admin"))
+    {
+        await roleManager.CreateAsync(new IdentityRole("Admin"));
+    }
+
+    var adminUser = await userManager.FindByNameAsync("admin");
+    if (adminUser == null)
+    {
+        adminUser = new ApplicationUser
+        {
+            UserName = "admin",
+            Email = "admin@example.com",
+            EmailConfirmed = true
+        };
+
+        var result = await userManager.CreateAsync(adminUser, "Admin@123");
+        if (result.Succeeded)
+        {
+            await userManager.AddToRoleAsync(adminUser, "Admin");
+        }
+    }
+}
+
 
 // Routing mặc định
 app.MapControllerRoute(
