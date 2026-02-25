@@ -19,3 +19,5 @@ dotnet ef migrations add InitMigration
 dotnet ef database update
 
 # 6. Lenh dotnet xem cac thu vien da cai (package): dotnet list package
+
+# Deploy Railway cloud: https://minierp-production.up.railway.app/

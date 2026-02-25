@@ -3,6 +3,9 @@ using MiniERP.Data;
 using MiniERP.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.FileProviders;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +14,10 @@ builder.Services.AddControllersWithViews();
 
 // Kết nối database
 builder.Services.AddDbContext<MiniERPContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseMySql(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        new MySqlServerVersion(new Version(9, 4)) 
+    ));
 
 // Identity
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
