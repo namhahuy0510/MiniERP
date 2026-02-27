@@ -20,3 +20,9 @@
 
 ## Deploy Railway cloud
 <img width="1916" height="1039" alt="image" src="https://github.com/user-attachments/assets/38be3406-cae3-4f29-b32f-2c5e9a4c9460" />
+
+## Dang nhap voi tai khoan admin de thuc hien thao tac CRUD voi bang quan ly nhan vien
+```
+username:Admin
+password:Admin@123
+```
