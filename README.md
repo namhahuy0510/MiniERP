@@ -26,3 +26,6 @@
 username:Admin
 password:Admin@123
 ```
+
+## URL Web app
+https://minierp-production.up.railway.app/
