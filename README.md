@@ -30,5 +30,5 @@ password:Admin@123
 ## URL Web app
 https://minierp-production.up.railway.app/
 
-## So do class db
+## So do ERD
 <img width="934" height="762" alt="image" src="https://github.com/user-attachments/assets/1c1aed6d-d8f6-4af4-8091-8cebf363bf6a" />
