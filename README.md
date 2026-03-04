@@ -79,4 +79,4 @@ Quản lý Deployment trên Railway
 
 --------------------------------------------------------------------------------------------------------------
 
-© 2026 MiniERP Project - Giải pháp quản trị nhân sự tinh gọn cho doanh nghiệp.
+© 2026 NAMHA TECHNOLOGY | MiniERP Project - Giải pháp quản trị nhân sự tinh gọn cho doanh nghiệp.
