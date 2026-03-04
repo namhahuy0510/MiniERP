@@ -1,7 +1,7 @@
 # MiniERP
 
 ## Trang chu
-<img width="960" height="540" alt="Trang chu" src="https://github.com/user-attachments/assets/e372542f-cdfd-44d7-bd4e-fec386d8dfd3" />
+<img width="480" height="270" alt="Trang chu" src="https://github.com/user-attachments/assets/e372542f-cdfd-44d7-bd4e-fec386d8dfd3" />
 
 ## Update du lieu nhan vien 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/94d49219-df81-484c-af33-f13d356f06e0" />
