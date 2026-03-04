@@ -1,37 +1,67 @@
-# MiniERP
+💎 MiniERP - Personnel Management Solution
 
-## Trang chu
+MiniERP là một ứng dụng web mạnh mẽ và linh hoạt giúp doanh nghiệp nhỏ quản lý hồ sơ nhân sự, phân quyền người dùng và hỗ trợ đa ngôn ngữ hoàn chỉnh.
+
+🔗 Thông tin truy cập
+
+Website: https://minierp-production.up.railway.app/
+
+Tài khoản Admin dùng thử:
+
+Username: Admin
+
+Password: Admin@123
+
+🌐 Đa ngôn ngữ (i18n Support)
+
+Hệ thống hỗ trợ chuyển đổi linh hoạt giữa 3 ngôn ngữ: Tiếng Việt, English, và 中文.
+
+Giao diện tiếng Trung (Hanzi)
+
+<img width="480" height="270" alt="Giao diện tiếng Trung" src="https://github.com/user-attachments/assets/ec01b5f3-d1c5-410a-9473-ebd4827fd453" />
+
+Cài đặt ngôn ngữ
+
+<img width="480" height="270" alt="Cài đặt ngôn ngữ" src="https://github.com/user-attachments/assets/c0217cd0-3c5f-4852-853b-34c9b1bd5015" />
+
+👥 Quản lý Nhân viên (CRUD & Search)
+
+Cho phép quản lý toàn diện thông tin nhân sự và tìm kiếm thông minh theo tên.
+
+Trang chủ hệ thống
+
 <img width="480" height="270" alt="Trang chu" src="https://github.com/user-attachments/assets/e372542f-cdfd-44d7-bd4e-fec386d8dfd3" />
 
-## Update du lieu nhan vien 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/94d49219-df81-484c-af33-f13d356f06e0" />
+Tìm kiếm nhân viên
 
-## Update tim kiem theo ten nhan vien
-<img width="1920" height="1032" alt="image" src="https://github.com/user-attachments/assets/c6c22e9a-5cc3-4d62-b524-0d3acde4d1b2" />
+<img width="480" height="270" alt="Tìm kiếm nhân viên" src="https://github.com/user-attachments/assets/c6c22e9a-5cc3-4d62-b524-0d3acde4d1b2" />
 
-## Ket qua hien thi tim kiem
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/1108e01f-e603-4afd-a521-d13ebf4f120e" />
+Kết quả hiển thị tìm kiếm
 
-## Bang phan quyen nguoi dung (user, role, author)
-<img width="603" height="371" alt="image" src="https://github.com/user-attachments/assets/5987117d-17af-4268-ae3a-bdd0a7f38821" />
+<img width="480" height="270" alt="Kết quả tìm kiếm" src="https://github.com/user-attachments/assets/1108e01f-e603-4afd-a521-d13ebf4f120e" />
 
-## Deploy Railway cloud
-<img width="1916" height="1039" alt="image" src="https://github.com/user-attachments/assets/38be3406-cae3-4f29-b32f-2c5e9a4c9460" />
+Cập nhật dữ liệu nhân viên
 
-## Dang nhap voi tai khoan admin de thuc hien thao tac CRUD voi bang quan ly nhan vien
-```
-username:Admin
-password:Admin@123
-```
+<img width="480" height="270" alt="Update dữ liệu" src="https://github.com/user-attachments/assets/94d49219-df81-484c-af33-f13d356f06e0" />
 
-## URL Web app
-https://minierp-production.up.railway.app/
+🛡️ Bảo mật & Phân quyền (RBAC)
 
-## So do ERD
-<img width="934" height="762" alt="image" src="https://github.com/user-attachments/assets/1c1aed6d-d8f6-4af4-8091-8cebf363bf6a" />
+Hệ thống quản lý chặt chẽ thông qua các bảng User, Role và Authorize.
 
-## Them tinh nang thay doi ngon ngu
-<img width="478" height="506" alt="image" src="https://github.com/user-attachments/assets/c0217cd0-3c5f-4852-853b-34c9b1bd5015" />
+Sơ đồ phân quyền
 
-## Thay doi sang tieng Trung
-<img width="1680" height="981" alt="image" src="https://github.com/user-attachments/assets/ec01b5f3-d1c5-410a-9473-ebd4827fd453" />
+<img width="480" height="270" alt="Bảng phân quyền" src="https://github.com/user-attachments/assets/5987117d-17af-4268-ae3a-bdd0a7f38821" />
+
+Sơ đồ thực thể quan hệ (ERD)
+
+<img width="480" height="270" alt="Sơ đồ ERD" src="https://github.com/user-attachments/assets/1c1aed6d-d8f6-4af4-8091-8cebf363bf6a" />
+
+☁️ Triển khai (Deployment)
+
+Ứng dụng được triển khai tự động (CI/CD) thông qua nền tảng Railway Cloud.
+
+Quản lý Deployment trên Railway
+
+<img width="480" height="270" alt="Railway Deployment" src="https://github.com/user-attachments/assets/38be3406-cae3-4f29-b32f-2c5e9a4c9460" />
+
+© 2025 MiniERP Project - Giải pháp nhân sự tinh gọn.
