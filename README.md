@@ -29,3 +29,9 @@ https://minierp-production.up.railway.app/
 
 ## So do ERD
 <img width="934" height="762" alt="image" src="https://github.com/user-attachments/assets/1c1aed6d-d8f6-4af4-8091-8cebf363bf6a" />
+
+## Them tinh nang thay doi ngon ngu
+<img width="478" height="506" alt="image" src="https://github.com/user-attachments/assets/c0217cd0-3c5f-4852-853b-34c9b1bd5015" />
+
+## Thay doi sang tieng Trung
+<img width="1680" height="981" alt="image" src="https://github.com/user-attachments/assets/ec01b5f3-d1c5-410a-9473-ebd4827fd453" />
