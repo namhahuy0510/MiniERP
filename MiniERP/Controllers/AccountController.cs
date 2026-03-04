@@ -84,10 +84,11 @@ namespace MyApp.Controllers
         [AllowAnonymous]
         public IActionResult AccessDenied()
         {
-            return View();
+            // Trả về view AccessDenied.cshtml trong Shared
+            return View("~/Views/Shared/AccessDenied.cshtml");
         }
 
-
+        // POST: /Account/SeedAdmin
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> SeedAdmin(string userName, string password)
@@ -124,7 +125,5 @@ namespace MyApp.Controllers
 
             return Ok($"Admin user {userName} already exists.");
         }
-
-
     }
 }

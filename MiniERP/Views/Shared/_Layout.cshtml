@@ -54,13 +54,13 @@
                         {
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle text-dark" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-person-circle me-1"></i>Xin chào @User.Identity?.Name
+                                    <i class="bi bi-person-circle me-1"></i>@T.GetString("Welcome") @User.Identity?.Name
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end shadow border-0" aria-labelledby="userDropdown">
                                     <li>
                                         <form asp-controller="Account" asp-action="Logout" method="get">
                                             <button type="submit" class="dropdown-item text-danger">
-                                                <i class="bi bi-box-arrow-right me-2"></i>Đăng xuất
+                                                <i class="bi bi-box-arrow-right me-2"></i>@T.GetString("Logout")
                                             </button>
                                         </form>
                                     </li>
@@ -70,13 +70,18 @@
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Đăng ký</a>
+                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">
+                                    @T.GetString("Register")
+                                </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Đăng nhập</a>
+                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">
+                                    @T.GetString("Login")
+                                </a>
                             </li>
                         }
                     </ul>
+
                 </div>
             </div>
         </nav>

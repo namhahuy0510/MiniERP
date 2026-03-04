@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using MiniERP.Data;
 using MiniERP.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace MiniERP.Controllers
 {

@@ -6,7 +6,6 @@ using Microsoft.Extensions.FileProviders;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using MiniERP.Services;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Đăng ký dịch vụ MVC
@@ -27,8 +26,9 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 // Cấu hình cookie cho Identity
 builder.Services.ConfigureApplicationCookie(options =>
 {
+    // Cả chưa đăng nhập và sai quyền đều vào AccessDenied
+    options.LoginPath = "/Account/AccessDenied";
     options.AccessDeniedPath = "/Account/AccessDenied";
-    options.LoginPath = "/Account/Login";
 });
 
 // Cấu hình Kestrel để nghe đúng cổng
@@ -75,28 +75,7 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Middleware kiểm tra login
-app.Use(async (context, next) =>
-{
-    var path = context.Request.Path.Value?.ToLower();
-
-    if (string.IsNullOrEmpty(path) || path == "/")
-    {
-        if (context.User.Identity?.IsAuthenticated == true)
-        {
-            context.Response.Redirect("/Home/Index");
-            return;
-        }
-        else
-        {
-            context.Response.Redirect("/Account/Login");
-            return;
-        }
-    }
-
-    await next();
-});
-
+// Seed role và user Admin mặc định
 using (var scope = app.Services.CreateScope())
 {
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
@@ -124,7 +103,6 @@ using (var scope = app.Services.CreateScope())
         }
     }
 }
-
 
 // Routing mặc định
 app.MapControllerRoute(

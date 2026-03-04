@@ -38,5 +38,9 @@
   "LoginTitle": "登录页面",
   "RegisterTitle": "注册页面",
   "NoAccountQuestion": "没有账号？立即注册",
-  "AlreadyHaveAccount": "已有账号？立即登录"
+  "AlreadyHaveAccount": "已有账号？立即登录",
+
+  "AccessDeniedTitle": "访问被拒绝",
+  "AccessDeniedMessage": "您没有权限执行此操作。",
+  "GoBackHome": "返回首页"
 }

@@ -38,5 +38,9 @@
   "LoginTitle": "Trang đăng nhập",
   "RegisterTitle": "Trang đăng ký",
   "NoAccountQuestion": "Chưa có tài khoản? Đăng ký ngay",
-  "AlreadyHaveAccount": "Đã có tài khoản? Đăng nhập ngay"
+  "AlreadyHaveAccount": "Đã có tài khoản? Đăng nhập ngay",
+
+  "AccessDeniedTitle": "Truy cập bị từ chối",
+  "AccessDeniedMessage": "Bạn không có quyền thực hiện hành động này.",
+  "GoBackHome": "Quay lại trang chủ"
 }

@@ -126,3 +126,22 @@ function initSearchBox() {
         }
     });
 }
+
+/**
+ * Hàm kiểm tra đăng nhập
+ */
+function isLoggedIn() {
+    return localStorage.getItem("userToken") !== null;
+}
+
+function goToEmployeePage() {
+    if (!isLoggedIn()) {
+        var modalElement = document.getElementById("loginRequiredModal");
+        if (modalElement) {
+            var modal = new bootstrap.Modal(modalElement);
+            modal.show();
+        }
+        return;
+    }
+    window.location.href = "/Employee/EmployeeManagement";
+}

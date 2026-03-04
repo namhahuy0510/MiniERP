@@ -38,5 +38,9 @@
   "LoginTitle": "Login Page",
   "RegisterTitle": "Register Page",
   "NoAccountQuestion": "No account? Register now",
-  "AlreadyHaveAccount": "Already have an account? Login now"
+  "AlreadyHaveAccount": "Already have an account? Login now",
+
+  "AccessDeniedTitle": "Access Denied",
+  "AccessDeniedMessage": "You do not have permission to perform this action.",
+  "GoBackHome": "Go back to Home"
 }

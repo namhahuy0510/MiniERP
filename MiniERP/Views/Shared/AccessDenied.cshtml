@@ -1,7 +1,8 @@
 @{
-    ViewData["Title"] = "Access Denied";
+    ViewData["Title"] = T.GetString("AccessDeniedTitle");
 }
 
-<h1>Truy cập bị từ chối</h1>
-<p>Bạn không có quyền thực hiện hành động này.</p>
-<a asp-controller="Home" asp-action="Index">Quay lại trang chủ</a>
+<h1>@T.GetString("AccessDeniedTitle")</h1>
+<p>@T.GetString("AccessDeniedMessage")</p>
+<a asp-controller="Home" asp-action="Index">@T.GetString("GoBackHome")</a>
+    
