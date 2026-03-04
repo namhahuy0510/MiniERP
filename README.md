@@ -71,10 +71,12 @@ Sơ đồ thực thể quan hệ (ERD)
 
 Ứng dụng được triển khai tự động (CI/CD) thông qua nền tảng Railway Cloud, kết nối với Database MySQL trực tuyến.
 
+<img width="480" height="270" alt="image" src="https://github.com/user-attachments/assets/4058f8d7-0dac-4268-b506-d601c80dac42" />
+
 Quản lý Deployment trên Railway
 
 <img width="480" height="270" alt="Railway Deployment" src="https://github.com/user-attachments/assets/38be3406-cae3-4f29-b32f-2c5e9a4c9460" />
 
 --------------------------------------------------------------------------------------------------------------
 
-© 2026 MiniERP Project - Giải pháp quản trị nhân sự tinh gọn cho doanh nghiệp.
+© 2026 NAMHA TECHNOLOGY | MiniERP Project - Giải pháp quản trị nhân sự tinh gọn cho doanh nghiệp.
