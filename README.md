@@ -75,4 +75,6 @@ Quản lý Deployment trên Railway
 
 <img width="480" height="270" alt="Railway Deployment" src="https://github.com/user-attachments/assets/38be3406-cae3-4f29-b32f-2c5e9a4c9460" />
 
-© 2025 MiniERP Project - Giải pháp quản trị nhân sự tinh gọn cho doanh nghiệp.
+--------------------------------------------------------------------------------------------------------------
+
+© 2026 MiniERP Project - Giải pháp quản trị nhân sự tinh gọn cho doanh nghiệp.
