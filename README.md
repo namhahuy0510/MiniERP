@@ -6,31 +6,23 @@ MiniERP là một ứng dụng web mạnh mẽ và linh hoạt giúp doanh nghi�
 
 Website: https://minierp-production.up.railway.app/
 
-🔑 Tài khoản dùng thử:
+🔑 Tài khoản dùng thử (Demo Accounts)
 
-Vai trò (Role)
+1. Quyền Quản trị viên (Admin)
 
-Username
+Username: Admin
 
-Password
+Password: Admin@123
 
-Quyền hạn
+Quyền hạn: Toàn quyền hệ thống (Thêm, Sửa, Xóa nhân viên, Quản lý phân quyền).
 
-Quản trị viên
+2. Quyền Nhân viên (User)
 
-Admin
+Username: User
 
-Admin@123
+Password: User@123
 
-Toàn quyền (CRUD nhân viên, Phân quyền)
-
-Nhân viên
-
-User
-
-User@123
-
-Chỉ xem thông tin (Read-only)
+Quyền hạn: Chỉ xem thông tin (Read-only), không có quyền can thiệp dữ liệu.
 
 🌐 Đa ngôn ngữ (i18n Support)
 
@@ -52,7 +44,7 @@ Trang chủ hệ thống
 
 <img width="480" height="270" alt="Trang chu" src="https://github.com/user-attachments/assets/e372542f-cdfd-44d7-bd4e-fec386d8dfd3" />
 
-Tìm kiếm nhân viên
+Tìm kiếm nhân viên theo tên
 
 <img width="480" height="270" alt="Tìm kiếm nhân viên" src="https://github.com/user-attachments/assets/c6c22e9a-5cc3-4d62-b524-0d3acde4d1b2" />
 
@@ -60,13 +52,13 @@ Kết quả hiển thị tìm kiếm
 
 <img width="480" height="270" alt="Kết quả tìm kiếm" src="https://github.com/user-attachments/assets/1108e01f-e603-4afd-a521-d13ebf4f120e" />
 
-Cập nhật dữ liệu nhân viên
+Cập nhật thông tin nhân sự
 
 <img width="480" height="270" alt="Update dữ liệu" src="https://github.com/user-attachments/assets/94d49219-df81-484c-af33-f13d356f06e0" />
 
 🛡️ Bảo mật & Phân quyền (RBAC)
 
-Hệ thống quản lý chặt chẽ thông qua các bảng User, Role và Authorize.
+Hệ thống quản lý chặt chẽ thông qua các bảng User, Role và Authorize. Đảm bảo an toàn dữ liệu và phân chia trách nhiệm rõ ràng.
 
 Sơ đồ phân quyền
 
@@ -78,10 +70,10 @@ Sơ đồ thực thể quan hệ (ERD)
 
 ☁️ Triển khai (Deployment)
 
-Ứng dụng được triển khai tự động (CI/CD) thông qua nền tảng Railway Cloud.
+Ứng dụng được triển khai tự động (CI/CD) thông qua nền tảng Railway Cloud, kết nối với Database MySQL trực tuyến.
 
 Quản lý Deployment trên Railway
 
 <img width="480" height="270" alt="Railway Deployment" src="https://github.com/user-attachments/assets/38be3406-cae3-4f29-b32f-2c5e9a4c9460" />
 
-© 2025 MiniERP Project - Giải pháp nhân sự tinh gọn.
+© 2025 MiniERP Project - Giải pháp quản trị nhân sự tinh gọn cho doanh nghiệp.
