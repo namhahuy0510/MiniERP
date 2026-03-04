@@ -6,11 +6,31 @@ MiniERP là một ứng dụng web mạnh mẽ và linh hoạt giúp doanh nghi�
 
 Website: https://minierp-production.up.railway.app/
 
-Tài khoản Admin dùng thử:
+🔑 Tài khoản dùng thử:
 
-Username: Admin
+Vai trò (Role)
 
-Password: Admin@123
+Username
+
+Password
+
+Quyền hạn
+
+Quản trị viên
+
+Admin
+
+Admin@123
+
+Toàn quyền (CRUD nhân viên, Phân quyền)
+
+Nhân viên
+
+User
+
+User@123
+
+Chỉ xem thông tin (Read-only)
 
 🌐 Đa ngôn ngữ (i18n Support)
 
