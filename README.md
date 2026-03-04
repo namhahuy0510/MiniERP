@@ -40,10 +40,6 @@ Cài đặt ngôn ngữ
 
 Cho phép quản lý toàn diện thông tin nhân sự và tìm kiếm thông minh theo tên.
 
-Trang chủ hệ thống
-
-<img width="480" height="270" alt="Trang chu" src="https://github.com/user-attachments/assets/e372542f-cdfd-44d7-bd4e-fec386d8dfd3" />
-
 Tìm kiếm nhân viên theo tên
 
 <img width="480" height="270" alt="Tìm kiếm nhân viên" src="https://github.com/user-attachments/assets/c6c22e9a-5cc3-4d62-b524-0d3acde4d1b2" />
