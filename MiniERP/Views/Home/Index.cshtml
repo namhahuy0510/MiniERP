@@ -1,17 +1,19 @@
 ﻿@{
-    ViewData["Title"] = "Trang chủ";
+    ViewData["Title"] = T.GetString("Home");
 }
 
+@* 1. Phần nội dung chính *@
 <div class="text-center mb-4">
-    <h1 class="display-4">Kính chào quý khách hàng</h1>
+    <h1 class="display-4">@T.GetString("WelcomeMessage")</h1>
     <p>
-        Truy cập
+        @T.GetString("AccessNow") 
         <a href="https://github.com/namhahuy0510/MiniERP/tree/master" target="_blank">
-            Giải pháp quản lý nhân sự cho doanh nghiệp nhỏ
+            @T.GetString("SolutionDescription")
         </a>.
     </p>
 </div>
 
+@* 2. Phần Carousel hình ảnh *@
 <div id="miniErpCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#miniErpCarousel" data-bs-slide-to="0" class="active"></button>
@@ -21,15 +23,15 @@
     <div class="carousel-inner">
         <div class="carousel-item active">
             <img src="https://github.com/user-attachments/assets/e372542f-cdfd-44d7-bd4e-fec386d8dfd3"
-                 class="d-block w-100" style="max-height:500px; object-fit:cover;" alt="Trang chủ">
+                 class="d-block w-100" style="max-height:500px; object-fit:cover;" alt="@T.GetString("Home")">
         </div>
         <div class="carousel-item">
             <img src="https://github.com/user-attachments/assets/d83aadca-0106-418c-aa54-376f3b9c6271"
-                 class="d-block w-100" style="max-height:500px; object-fit:cover;" alt="Trang quản lý nhân viên">
+                 class="d-block w-100" style="max-height:500px; object-fit:cover;" alt="@T.GetString("EmployeeManagement")">
         </div>
         <div class="carousel-item">
             <img src="https://github.com/user-attachments/assets/94d49219-df81-484c-af33-f13d356f06e0"
-                 class="d-block w-100" style="max-height:500px; object-fit:cover;" alt="Update dữ liệu nhân viên">
+                 class="d-block w-100" style="max-height:500px; object-fit:cover;" alt="@T.GetString("UpdateData")">
         </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#miniErpCarousel" data-bs-slide="prev">
@@ -40,8 +42,49 @@
     </button>
 </div>
 
-<div class="text-center">
-    <a asp-controller="Employee" asp-action="EmployeeManagement" class="btn btn-primary">
-        Sang trang quản lý nhân viên
+@* 3. Nút điều hướng *@
+<div class="text-center mb-5">
+    <a asp-controller="Employee" asp-action="EmployeeManagement" class="btn btn-primary btn-lg shadow">
+        @T.GetString("GoToEmployeeManagement")
     </a>
 </div>
+
+@* 4. Modal Thông báo hệ thống *@
+<div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="updateModalLabel">
+                    <i class="bi bi-info-circle-fill me-2"></i> @T.GetString("NotificationTitle")
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body py-4">
+                <p class="fw-bold">@T.GetString("NotificationContent")</p>
+                <div class="alert alert-light border">
+                    <ul class="mb-0 small">
+                        <li>@T.GetString("UpdateFeature1")</li>
+                        <li>@T.GetString("UpdateFeature2")</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">@T.GetString("Close")</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* 5. Script điều khiển *@
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Chỉ hiện modal nếu trong session chưa đánh dấu đã xem
+            if (!sessionStorage.getItem('modalShown')) {
+                var myModal = new bootstrap.Modal(document.getElementById('updateModal'));
+                myModal.show();
+                sessionStorage.setItem('modalShown', 'true');
+            }
+        });
+    </script>
+}

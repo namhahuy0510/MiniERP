@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using MiniERP.Services
+@inject IJsonLocalizationService T
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -18,15 +21,26 @@
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Trang chủ</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="EmployeeManagement">QL Nhân viên</a>
-                        </li>
-                    </ul>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">
+                                    @T.GetString("Home")
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="EmployeeManagement">
+                                    @T.GetString("EmployeeManagement")
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Setting" asp-action="Setting">
+                                    @T.GetString("Settings")
+                                </a>
+                            </li>
+                        </ul>
+                        
+                        </div>
 
                     <ul class="navbar-nav">
                         @if (User.Identity?.IsAuthenticated == true)

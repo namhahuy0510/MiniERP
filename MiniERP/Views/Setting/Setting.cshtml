@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"] = T.GetString("Settings");
+    var currentLang = Context.Request.Cookies["lang"] ?? "vi";
+}
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">@T.GetString("Settings")</h4>
+        </div>
+        <div class="card-body">
+            <h5>@T.GetString("SelectLanguage")</h5>
+            <form asp-controller="Setting" asp-action="ChangeLanguage" method="post" class="mt-3">
+                <input type="hidden" name="returnUrl" value="@Context.Request.Path" />
+                
+                <div class="col-md-4">
+                    <select name="lang" class="form-select" onchange="this.form.submit()">
+                        <option value="vi" selected="@(currentLang == "vi")">Tiếng Việt</option>
+                        <option value="en" selected="@(currentLang == "en")">English</option>
+                        <option value="zh" selected="@(currentLang == "zh")">中文 (Chinese)</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

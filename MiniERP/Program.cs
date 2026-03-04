@@ -4,7 +4,7 @@ using MiniERP.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.FileProviders;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
-
+using MiniERP.Services;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -31,12 +31,18 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.LoginPath = "/Account/Login";
 });
 
-// ⚡ Cấu hình Kestrel để nghe đúng cổng
+// Cấu hình Kestrel để nghe đúng cổng
 var port = Environment.GetEnvironmentVariable("PORT") ?? "5000"; 
 builder.WebHost.ConfigureKestrel(options =>
 {
     options.ListenAnyIP(int.Parse(port));
 });
+
+// Đăng ký HttpContextAccessor để Service có thể đọc được Cookie
+builder.Services.AddHttpContextAccessor();
+
+// Đăng ký Service của bạn (dùng AddScoped để tạo mới theo mỗi yêu cầu HTTP)
+builder.Services.AddScoped<IJsonLocalizationService, JsonLocalizationService>();
 
 var app = builder.Build();
 

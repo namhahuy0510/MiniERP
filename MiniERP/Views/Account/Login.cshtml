@@ -1,27 +1,27 @@
 @{
-    ViewData["Title"] = "Trang đăng nhập";
+    ViewData["Title"] = T.GetString("LoginTitle");
 }
 
 <div style="display:flex; justify-content:center; align-items:center; height:600px;">
     <div style="width:400px; padding:20px; border:1px solid #ccc; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1); background:#fff;">
-        <h3 style="text-align:center; margin-bottom:20px;">Đăng nhập</h3>
+        <h3 style="text-align:center; margin-bottom:20px;">@T.GetString("Login")</h3>
         
         <form asp-action="Login" method="post">
             <div class="mb-3">
-                <label for="username" class="form-label">Tên đăng nhập</label>
+                <label for="username" class="form-label">@T.GetString("Username")</label>
                 <input type="text" id="username" name="username" 
                     class="form-control" 
                     style="width: 100%; padding: 12px; font-size: 14px; border-radius: 6px; border: 1px solid #ccc;" 
                     required />
             </div>
             <div class="mb-3">
-                <label for="password" class="form-label">Mật khẩu</label>
+                <label for="password" class="form-label">@T.GetString("Password")</label>
                 <input type="password" id="password" name="password" 
                     class="form-control" 
                     style="width: 100%; padding: 12px; font-size: 14px; border-radius: 6px; border: 1px solid #ccc;" 
                     required />
             </div>
-            <button type="submit" class="btn btn-primary w-100">Đăng nhập</button>
+            <button type="submit" class="btn btn-primary w-100">@T.GetString("Login")</button>
         </form>
 
         @if (!ViewData.ModelState.IsValid)
@@ -35,7 +35,7 @@
         }
 
         <div style="text-align:center; margin-top:20px;">
-            <a asp-action="Register" asp-controller="Account">Chưa có tài khoản? Đăng ký ngay</a>
+            <a asp-action="Register" asp-controller="Account">@T.GetString("NoAccountQuestion")</a>
         </div>
     </div>
 </div>
