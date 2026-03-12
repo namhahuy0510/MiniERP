@@ -10,7 +10,15 @@ MiniERP là một ứng dụng web mạnh mẽ và linh hoạt giúp doanh nghi�
 
 🔗 Thông tin truy cập
 
-Website: https://minierp-production.up.railway.app/
+Website: 
+
+```
+namha-application.ddns.net
+```
+hoặc truy cập tại
+```
+https://minierp-production.up.railway.app/
+```
 
 🔑 Tài khoản dùng thử (Demo Accounts)
 
