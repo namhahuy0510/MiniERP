@@ -43,6 +43,7 @@
   "AccessDeniedTitle": "Access Denied",
   "AccessDeniedMessage": "You do not have permission to perform this action.",
   "GoBackHome": "Go back to Home",
+  "FullName": "Full Name",
 
   "MyProfile": "My Profile",
   "EmployeeInfo": "Employee Information",

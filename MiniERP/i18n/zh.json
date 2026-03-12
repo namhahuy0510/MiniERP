@@ -43,6 +43,7 @@
   "AccessDeniedTitle": "访问被拒绝",
   "AccessDeniedMessage": "您没有权限执行此操作。",
   "GoBackHome": "返回首页",
+  "FullName": "姓名",
 
   "MyProfile": "我的资料",
   "EmployeeInfo": "员工信息",
