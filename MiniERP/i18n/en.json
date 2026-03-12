@@ -42,5 +42,14 @@
 
   "AccessDeniedTitle": "Access Denied",
   "AccessDeniedMessage": "You do not have permission to perform this action.",
-  "GoBackHome": "Go back to Home"
+  "GoBackHome": "Go back to Home",
+
+  "MyProfile": "My Profile",
+  "EmployeeInfo": "Employee Information",
+  "FullNameLabel": "Full Name",
+  "DepartmentLabel": "Department",
+  "PositionLabel": "Position",
+  "EmailLabel": "Email",
+  "PhoneLabel": "Phone Number",
+  "DateJoinedLabel": "Date Joined"
 }

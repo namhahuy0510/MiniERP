@@ -7,7 +7,7 @@
     <script type="importmap"></script>
     
     @* SỬA LỖI: Bỏ /wwwroot/ vì ASP.NET Core tự hiểu gốc là wwwroot *@
-    <link rel="icon" type="image/png" href="~/AppIcon.png" />
+    <link rel="icon" type="image/png" href="~/app.ico" />
     
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     
@@ -23,7 +23,7 @@
             <div class="container-fluid">
                 <a class="navbar-brand fw-bold text-primary" asp-area="" asp-controller="Home" asp-action="Index">
                     @* Thêm logo nhỏ cạnh brand cho chuyên nghiệp *@
-                    <img src="~/AppIcon.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top me-1">
+                    <img src="~/app.ico" alt="Logo" width="30" height="30" class="d-inline-block align-text-top me-1">
                     MiniERP
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" 
@@ -47,6 +47,13 @@
                                 <i class="bi bi-gear me-1"></i>@T.GetString("Settings")
                             </a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Profile">
+                                <i class="bi bi-person-lines-fill me-1"></i>@T.GetString("MyProfile")
+                            </a>
+                        </li>
+
                     </ul>
                     
                     <ul class="navbar-nav">

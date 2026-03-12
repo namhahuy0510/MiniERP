@@ -1,0 +1,30 @@
+@model MiniERP.Models.Employee
+@{
+    ViewData["Title"] = T.GetString("MyProfile");
+}
+
+<h2 class="mb-3">@T.GetString("EmployeeInfo")</h2>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">@T.GetString("FullNameLabel")</dt>
+            <dd class="col-sm-9">@Model.FullName</dd>
+
+            <dt class="col-sm-3">@T.GetString("DepartmentLabel")</dt>
+            <dd class="col-sm-9">@Model.Department</dd>
+
+            <dt class="col-sm-3">@T.GetString("PositionLabel")</dt>
+            <dd class="col-sm-9">@Model.Position</dd>
+
+            <dt class="col-sm-3">@T.GetString("EmailLabel")</dt>
+            <dd class="col-sm-9">@Model.Email</dd>
+
+            <dt class="col-sm-3">@T.GetString("PhoneLabel")</dt>
+            <dd class="col-sm-9">@Model.Phone</dd>
+
+            <dt class="col-sm-3">@T.GetString("DateJoinedLabel")</dt>
+            <dd class="col-sm-9">@Model.DateJoined?.ToString("dd/MM/yyyy")</dd>
+        </dl>
+    </div>
+</div>

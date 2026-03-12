@@ -4,27 +4,25 @@
 
 <div style="display:flex; justify-content:center; align-items:center; height:600px;">
     <div style="width:400px; padding:20px; border:1px solid #ccc; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1); background:#fff;">
-        @* Sửa Password thành Register *@
         <h3 style="text-align:center; margin-bottom:20px;">@T.GetString("Register")</h3>
         
         <form asp-action="Register" method="post">
             <div class="mb-3">
-                @* Sửa Password thành Username *@
                 <label for="username" class="form-label">@T.GetString("Username")</label>
-                <input type="text" id="username" name="username" 
-                    class="form-control" 
-                    style="width: 100%; padding: 12px; font-size: 14px; border-radius: 6px; border: 1px solid #ccc;" 
-                    required />
+                <input type="text" id="username" name="username" class="form-control" required />
             </div>
             <div class="mb-3">
-                @* Chỗ này giữ nguyên Password là đúng *@
                 <label for="password" class="form-label">@T.GetString("Password")</label>
-                <input type="password" id="password" name="password" 
-                    class="form-control" 
-                    style="width: 100%; padding: 12px; font-size: 14px; border-radius: 6px; border: 1px solid #ccc;" 
-                    required />
+                <input type="password" id="password" name="password" class="form-control" required />
             </div>
-            @* Sửa nút bấm thành Register *@
+            <div class="mb-3">
+                <label for="email" class="form-label">@T.GetString("Email")</label>
+                <input type="email" id="email" name="email" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label for="fullName" class="form-label">@T.GetString("FullName")</label>
+                <input type="text" id="fullName" name="fullName" class="form-control" required />
+            </div>
             <button type="submit" class="btn btn-primary w-100">@T.GetString("Register")</button>
         </form>
 
@@ -37,8 +35,7 @@
                 }
             </div>
         }
-        
-        @* Thêm link quay lại đăng nhập cho tiện *@
+
         <div style="text-align:center; margin-top:20px;">
             <a asp-action="Login" asp-controller="Account">@T.GetString("AlreadyHaveAccount")</a>
         </div>

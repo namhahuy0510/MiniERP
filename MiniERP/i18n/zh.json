@@ -42,5 +42,14 @@
 
   "AccessDeniedTitle": "访问被拒绝",
   "AccessDeniedMessage": "您没有权限执行此操作。",
-  "GoBackHome": "返回首页"
+  "GoBackHome": "返回首页",
+
+  "MyProfile": "我的资料",
+  "EmployeeInfo": "员工信息",
+  "FullNameLabel": "姓名",
+  "DepartmentLabel": "部门",
+  "PositionLabel": "职位",
+  "EmailLabel": "电子邮箱",
+  "PhoneLabel": "电话号码",
+  "DateJoinedLabel": "入职日期"
 }

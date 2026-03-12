@@ -5,10 +5,11 @@ using MiniERP.Models;
 using Microsoft.AspNetCore.Authorization;
 using System.Threading.Tasks;
 using System.Linq;
+using System.Security.Claims;
 
 namespace MiniERP.Controllers
 {
-    [Authorize] // bắt buộc phải đăng nhập mới vào được controller này
+    [Authorize]
     public class EmployeeController : Controller
     {
         private readonly MiniERPContext _context;
@@ -18,7 +19,6 @@ namespace MiniERP.Controllers
             _context = context;
         }
 
-        // User nào đăng nhập cũng xem được danh sách
         [HttpGet]
         public IActionResult EmployeeManagement()
         {
@@ -26,7 +26,6 @@ namespace MiniERP.Controllers
             return View(employees);
         }
 
-        // Chỉ Admin mới được tạo nhân viên
         [HttpGet]
         [Authorize(Roles = "Admin")]
         public IActionResult Create()
@@ -48,14 +47,13 @@ namespace MiniERP.Controllers
             return View(emp);
         }
 
-        // Chỉ Admin mới được sửa
         [HttpGet]
         [Authorize(Roles = "Admin")]
         public IActionResult Edit(int id)
         {
             var emp = _context.Employees.Find(id);
             if (emp == null) return NotFound();
-            return View(emp); 
+            return View(emp);
         }
 
         [HttpPost]
@@ -72,14 +70,13 @@ namespace MiniERP.Controllers
             return View(emp);
         }
 
-        // Chỉ Admin mới được xóa
         [HttpGet]
         [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             var emp = _context.Employees.Find(id);
             if (emp == null) return NotFound();
-            return View(emp); 
+            return View(emp);
         }
 
         [HttpPost, ActionName("Delete")]
@@ -94,7 +91,6 @@ namespace MiniERP.Controllers
             return RedirectToAction("EmployeeManagement");
         }
 
-        // Tìm kiếm: chỉ cần đăng nhập, không phân role
         [HttpGet]
         public async Task<IActionResult> Search(string keyword)
         {
@@ -107,6 +103,15 @@ namespace MiniERP.Controllers
             }
 
             return PartialView("EmployeeSearchResults", await employees.ToListAsync());
+        }
+
+        [HttpGet]
+        public IActionResult Profile()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var emp = _context.Employees.FirstOrDefault(e => e.UserId == userId);
+            if (emp == null) return NotFound();
+            return View(emp);
         }
     }
 }

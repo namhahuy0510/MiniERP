@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using System.Threading.Tasks;
 using MiniERP.Models;
+using MiniERP.Data;
+using System;
 
 namespace MyApp.Controllers
 {
@@ -10,12 +12,15 @@ namespace MyApp.Controllers
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly MiniERPContext _context;
 
         public AccountController(SignInManager<ApplicationUser> signInManager,
-                                 UserManager<ApplicationUser> userManager)
+                                 UserManager<ApplicationUser> userManager,
+                                 MiniERPContext context)
         {
             _signInManager = signInManager;
             _userManager = userManager;
+            _context = context;
         }
 
         // GET: /Account/Login
@@ -51,15 +56,30 @@ namespace MyApp.Controllers
         // POST: /Account/Register
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Register(string username, string password)
+        public async Task<IActionResult> Register(string username, string password, string email, string fullName)
         {
-            var user = new ApplicationUser { UserName = username };
+            var user = new ApplicationUser { UserName = username, Email = email };
             var result = await _userManager.CreateAsync(user, password);
 
             if (result.Succeeded)
             {
                 await _userManager.AddToRoleAsync(user, "User");
                 await _signInManager.SignInAsync(user, isPersistent: false);
+
+                // Tạo mới Employee gắn với UserId
+                var employee = new Employee
+                {
+                    FullName = fullName,
+                    Email = email,
+                    Department = "Default",
+                    Position = "Staff",
+                    DateJoined = DateTime.Now,
+                    UserId = user.Id
+                };
+
+                _context.Employees.Add(employee);
+                await _context.SaveChangesAsync();
+
                 return RedirectToAction("Index", "Home");
             }
 
@@ -84,7 +104,6 @@ namespace MyApp.Controllers
         [AllowAnonymous]
         public IActionResult AccessDenied()
         {
-            // Trả về view AccessDenied.cshtml trong Shared
             return View("~/Views/Shared/AccessDenied.cshtml");
         }
 
@@ -96,13 +115,11 @@ namespace MyApp.Controllers
             var roleManager = HttpContext.RequestServices.GetRequiredService<RoleManager<IdentityRole>>();
             var userManager = HttpContext.RequestServices.GetRequiredService<UserManager<ApplicationUser>>();
 
-            // Tạo role Admin nếu chưa có
             if (!await roleManager.RoleExistsAsync("Admin"))
             {
                 await roleManager.CreateAsync(new IdentityRole("Admin"));
             }
 
-            // Tạo user Admin nếu chưa có
             var adminUser = await userManager.FindByNameAsync(userName);
             if (adminUser == null)
             {
@@ -117,6 +134,20 @@ namespace MyApp.Controllers
                 if (result.Succeeded)
                 {
                     await userManager.AddToRoleAsync(adminUser, "Admin");
+
+                    // Tạo Employee cho Admin
+                    var employee = new Employee
+                    {
+                        FullName = userName,
+                        Email = $"{userName}@example.com",
+                        Department = "IT",
+                        Position = "Administrator",
+                        DateJoined = DateTime.Now,
+                        UserId = adminUser.Id
+                    };
+                    _context.Employees.Add(employee);
+                    await _context.SaveChangesAsync();
+
                     return Ok($"Admin user {userName} created successfully.");
                 }
 
