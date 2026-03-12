@@ -1,4 +1,7 @@
 💎 MiniERP - Personnel Management Solution
+
+<img width="100" height="100" alt="app" src="https://github.com/user-attachments/assets/db7c7525-a5fd-4bc5-96a4-3a35031f5c04" />
+
 Version Pre-Release (v1.0.4.3.26)
 
 MiniERP là một ứng dụng web mạnh mẽ và linh hoạt giúp doanh nghiệp nhỏ quản lý hồ sơ nhân sự, phân quyền người dùng và hỗ trợ tác vụ văn phòng.
