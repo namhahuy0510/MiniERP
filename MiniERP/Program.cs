@@ -44,6 +44,9 @@ builder.Services.AddHttpContextAccessor();
 // Đăng ký Service của bạn (dùng AddScoped để tạo mới theo mỗi yêu cầu HTTP)
 builder.Services.AddScoped<IJsonLocalizationService, JsonLocalizationService>();
 
+// Đăng ký dịch vụ SignalR
+builder.Services.AddSignalR();
+
 var app = builder.Build();
 
 // Xử lý lỗi
@@ -108,5 +111,8 @@ using (var scope = app.Services.CreateScope())
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+// Cấu hình Hub chat (SignalR)
+app.MapHub<MiniERP.Hubs.ChatHub>("/chatHub");
 
 app.Run();

@@ -1,0 +1,14 @@
+<div id="chatBox" class="chat-box shadow">
+    <div class="chat-header bg-primary text-white d-flex justify-content-between align-items-center p-2">
+        <span><i class="bi bi-chat-dots me-2"></i>Chat</span>
+        <button id="toggleChat" class="btn btn-sm btn-light">−</button>
+    </div>
+    <div class="chat-body p-2">
+        <ul id="messagesList" class="list-group mb-2" style="max-height:200px; overflow-y:auto;"></ul>
+        <div class="input-group">
+            <input type="text" id="userInput" class="form-control" placeholder="Tên người dùng" />
+            <input type="text" id="messageInput" class="form-control" placeholder="Nhập tin nhắn..." />
+            <button id="sendButton" class="btn btn-primary"><i class="bi bi-send-fill"></i></button>
+        </div>
+    </div>
+</div>

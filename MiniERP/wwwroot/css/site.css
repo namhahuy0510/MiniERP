@@ -63,3 +63,31 @@ body::before {
     background: rgba(255,255,255,0.7);
     z-index: -1;
 }
+
+
+/* Box Chat */
+.chat-box {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    z-index: 9999; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.chat-header {
+    cursor: pointer;
+}
+
+.chat-body {
+    display: block;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.chat-box.collapsed .chat-body {
+    display: none;
+}
