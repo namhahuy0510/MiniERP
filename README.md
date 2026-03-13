@@ -88,6 +88,10 @@ Quản lý Deployment trên Railway
 
 <img width="480" height="270" alt="Railway Deployment" src="https://github.com/user-attachments/assets/38be3406-cae3-4f29-b32f-2c5e9a4c9460" />
 
+Chức năng chatbox
+
+<img width="1920" height="1032" alt="image" src="https://github.com/user-attachments/assets/b8ef5c82-9517-4eb3-a4a5-b57d4726a6cd" />
+
 --------------------------------------------------------------------------------------------------------------
 
 © 2026 NAMHA TECHNOLOGY | MiniERP Project - Giải pháp quản trị nhân sự tinh gọn cho doanh nghiệp.
