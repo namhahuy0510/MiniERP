@@ -12,12 +12,13 @@ MiniERP là một ứng dụng web mạnh mẽ và linh hoạt giúp doanh nghi�
 
 Website: 
 
-```
-namha-application.ddns.net
-```
 hoặc truy cập tại
 ```
 https://minierp-production.up.railway.app/
+```
+
+```
+namha-application.ddns.net (Không thể đăng nhập!)
 ```
 
 🔑 Tài khoản dùng thử (Demo Accounts)
