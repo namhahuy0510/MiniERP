@@ -90,7 +90,7 @@ Quản lý Deployment trên Railway
 
 Chức năng chatbox
 
-<img width="1920" height="1032" alt="image" src="https://github.com/user-attachments/assets/b8ef5c82-9517-4eb3-a4a5-b57d4726a6cd" />
+<img width="480" height="270" alt="image" src="https://github.com/user-attachments/assets/b8ef5c82-9517-4eb3-a4a5-b57d4726a6cd" />
 
 --------------------------------------------------------------------------------------------------------------
 
