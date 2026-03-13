@@ -1,0 +1,24 @@
+@model IEnumerable<MiniERP.Models.Employee>
+
+@if (User.IsInRole("Admin"))
+{
+    <div class="card mb-3 shadow-sm border-0">
+        <div class="card-body d-flex flex-wrap gap-2 align-items-center">
+            <i class="bi bi-download text-primary fs-4 me-1"></i>
+            <span class="fw-semibold me-2">Xuất danh sách nhân viên:</span>
+            <a asp-action="ExportEmployees" asp-route-format="txt" class="btn btn-sm btn-outline-secondary">
+                .txt
+            </a>
+            <a asp-action="ExportEmployees" asp-route-format="md" class="btn btn-sm btn-outline-secondary">
+                .md
+            </a>
+            <a asp-action="ExportEmployees" asp-route-format="json" class="btn btn-sm btn-outline-secondary">
+                .json
+            </a>
+            <a asp-action="ExportEmployees" asp-route-format="csv" class="btn btn-sm btn-outline-secondary">
+                Excel (.csv)
+            </a>
+        </div>
+    </div>
+}
+

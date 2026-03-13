@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MiniERP.Models.Employee>
+@model IEnumerable<MiniERP.Models.Employee>
 
 @{
     ViewData["Title"] = "Trang quản lý nhân viên";
@@ -12,6 +12,8 @@
         <a asp-action="Create" class="btn btn-primary">Thêm nhân viên mới</a>
     }
 </div>
+
+@await Html.PartialAsync("_EmployeeExportPanel", Model)
 
 <div class="mb-3 d-flex justify-content-start">
     <input type="text" id="searchBox" placeholder="Nhập từ khóa (Tên nhân viên, Vị trí,...)"

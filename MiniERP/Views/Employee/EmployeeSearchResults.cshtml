@@ -1,6 +1,6 @@
 @model IEnumerable<MiniERP.Models.Employee>
 
-<table class="table table-striped table-bordered">
+<table class="table table-striped table-bordered table-hover">
     <thead class="table-light">
         <tr>
             <th>Id</th>
@@ -15,7 +15,10 @@
     <tbody>
         @foreach (var emp in Model)
         {
-            <tr>
+            <tr class="employee-select-row"
+                data-id="@emp.Id"
+                data-name="@emp.FullName"
+                data-position="@emp.Position">
                 <td>@emp.Id</td>
                 <td>@emp.FullName</td>
                 <td>@emp.DateOfBirth.ToShortDateString()</td>

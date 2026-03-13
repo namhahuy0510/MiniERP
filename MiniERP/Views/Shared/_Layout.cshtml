@@ -94,11 +94,50 @@
         </nav>
     </header>
 
-    <!-- Main -->
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    <!-- Main with left sidebar -->
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-3 col-lg-2 d-none d-md-block bg-light border-end erp-sidebar">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-1">
+                            <a class="nav-link d-flex align-items-center gap-2" asp-controller="Employee" asp-action="EmployeeManagement">
+                                <i class="bi bi-people-fill"></i>
+                                <span>Quản lý nhân viên</span>
+                            </a>
+                        </li>
+                        <li class="nav-item mb-1">
+                            <a class="nav-link d-flex align-items-center gap-2" asp-controller="Employee" asp-action="Profile">
+                                <i class="bi bi-person-circle"></i>
+                                <span>Hồ sơ của tôi</span>
+                            </a>
+                        </li>
+                        <li class="nav-item mb-1">
+                            <a class="nav-link d-flex align-items-center gap-2" asp-controller="SelfAttendance" asp-action="Index">
+                                <i class="bi bi-calendar-heart"></i>
+                                <span>Chấm công của tôi</span>
+                            </a>
+                        </li>
+                        <li class="nav-item mb-1">
+                            <a class="nav-link d-flex align-items-center gap-2" asp-controller="Salary" asp-action="Index">
+                                <i class="bi bi-cash-coin"></i>
+                                <span>Lương</span>
+                            </a>
+                        </li>
+                        <li class="nav-item mb-1">
+                            <a class="nav-link d-flex align-items-center gap-2" asp-controller="Attendance" asp-action="Index">
+                                <i class="bi bi-calendar-check"></i>
+                                <span>Chấm công (Admin)</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main role="main" class="col-md-9 col-lg-10 ms-sm-auto px-3 pb-3">
+                @RenderBody()
+            </main>
+        </div>
     </div>
 
     <!-- ChatBox (only when logged in) -->

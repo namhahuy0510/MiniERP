@@ -1,0 +1,67 @@
+@model (MiniERP.Models.Employee emp, MiniERP.Models.Attendance? todayAttendance)
+
+@{
+    ViewData["Title"] = "Chấm công của tôi";
+    var emp = Model.emp;
+    var att = Model.todayAttendance;
+}
+
+<div class="container py-3">
+    <h2 class="h4 mb-3">
+        <i class="bi bi-calendar-heart me-2 text-primary"></i>Chấm công hôm nay
+    </h2>
+
+    <div class="card mb-3 shadow-sm border-0">
+        <div class="card-body d-flex flex-column flex-md-row justify-content-between align-items-md-center">
+            <div>
+                <h5 class="card-title mb-1">@emp.FullName</h5>
+                <p class="mb-0 text-muted">
+                    @emp.Position
+                    <span class="mx-1">•</span>
+                    Ngày: @DateTime.Today.ToString("dd/MM/yyyy")
+                </p>
+                @if (att != null && att.IsPresent)
+                {
+                    <p class="mb-0 mt-1 small text-success">
+                        Đã check-in lúc @att.CheckInTime?.ToString("HH:mm")
+                        @if (att.CheckOutTime != null)
+                        {
+                            <span>- Đã checkout lúc @att.CheckOutTime?.ToString("HH:mm")</span>
+                        }
+                    </p>
+                }
+                else
+                {
+                    <p class="mb-0 mt-1 small text-muted">Chưa chấm công hôm nay.</p>
+                }
+            </div>
+            <div class="mt-3 mt-md-0">
+                @if (att == null || !att.IsPresent)
+                {
+                    <form asp-action="CheckIn" method="post" class="d-inline">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn-success">
+                            <i class="bi bi-box-arrow-in-right me-1"></i>Check-in
+                        </button>
+                    </form>
+                }
+                else if (att.IsPresent && att.CheckOutTime == null)
+                {
+                    <form asp-action="CheckOut" method="post" class="d-inline">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn-outline-danger">
+                            <i class="bi bi-box-arrow-right me-1"></i>Check-out
+                        </button>
+                    </form>
+                }
+                else
+                {
+                    <span class="badge bg-success-subtle text-success border border-success-subtle">
+                        Đã hoàn tất chấm công hôm nay
+                    </span>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

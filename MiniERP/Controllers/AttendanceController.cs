@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace MiniERP.Controllers
 {
+    [Microsoft.AspNetCore.Authorization.Authorize(Roles = "Admin")]
     public class AttendanceController : Controller
     {
         private readonly MiniERPContext _context;
@@ -24,6 +25,11 @@ namespace MiniERP.Controllers
             var attendances = await _context.Attendance
                 .Include(a => a.Employee)
                 .Where(a => a.Date == queryDate)
+                .ToListAsync();
+
+            ViewBag.Date = queryDate;
+            ViewBag.Employees = await _context.Employees
+                .OrderBy(e => e.FullName)
                 .ToListAsync();
 
             return View(attendances);

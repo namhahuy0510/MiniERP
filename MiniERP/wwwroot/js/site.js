@@ -66,6 +66,47 @@ function searchEmployee() {
         .catch(err => console.error("Search error:", err));
 }
 
+// Tìm kiếm nhân viên cho form chấm công (Admin)
+function searchEmployeeForAttendance() {
+    var keywordInput = document.getElementById("attendanceEmployeeDisplay");
+    var keyword = keywordInput ? keywordInput.value : "";
+
+    fetch('/Employee/Search?keyword=' + encodeURIComponent(keyword || ""))
+        .then(response => response.text())
+        .then(html => {
+            var results = document.getElementById("searchResults");
+            if (!results) return;
+
+            results.innerHTML = html;
+            var modalElement = document.getElementById("searchModal");
+            if (modalElement) {
+                var modal = new bootstrap.Modal(modalElement);
+                modal.show();
+            }
+
+            // Gắn chọn nhân viên cho mỗi dòng kết quả
+            results.querySelectorAll(".employee-select-row").forEach(function (row) {
+                row.style.cursor = "pointer";
+                row.addEventListener("click", function () {
+                    var id = this.getAttribute("data-id");
+                    var name = this.getAttribute("data-name") || "";
+                    var position = this.getAttribute("data-position") || "";
+
+                    var hiddenId = document.getElementById("attendanceEmployeeId");
+                    var display = document.getElementById("attendanceEmployeeDisplay");
+                    if (hiddenId) hiddenId.value = id;
+                    if (display) display.value = position ? (name + " (" + position + ")") : name;
+
+                    if (modalElement) {
+                        var instance = bootstrap.Modal.getInstance(modalElement);
+                        if (instance) instance.hide();
+                    }
+                });
+            });
+        })
+        .catch(err => console.error("Search error (attendance):", err));
+}
+
 // Search Box
 function initSearchBox() {
     const searchInput = document.getElementById('searchBox');
