@@ -1,4 +1,4 @@
-﻿// Đồng hồ
+// Đồng hồ
 function initDigitalClock() {
     const clockElement = document.getElementById('digital-clock');
     const dateElement = document.getElementById('current-date');
@@ -112,26 +112,55 @@ function initChatBox() {
     const chatBox = document.getElementById("chatBox");
     if (!chatBox) return;
 
+    // Lấy username hiện tại từ layout (server sẽ render vào data-attr trên body nếu cần)
+    const currentUser = document.body.getAttribute("data-current-user") || "";
+
     const connection = new signalR.HubConnectionBuilder()
         .withUrl("/chatHub")
         .build();
 
-    connection.on("ReceiveMessage", (user, message) => {
-        const msg = `${user}: ${message}`;
+    connection.on("ReceiveMessage", (fromUser, toUser, message, sentAt) => {
+        const messagesList = document.getElementById("messagesList");
+        if (!messagesList) return;
+
+        // Chỉ hiển thị tin nhắn nếu mình là người gửi hoặc người nhận
+        if (!currentUser || (currentUser !== fromUser && currentUser !== toUser)) {
+            return;
+        }
+
         const li = document.createElement("li");
-        li.textContent = msg;
-        li.className = "list-group-item";
-        document.getElementById("messagesList").appendChild(li);
+        const isSelf = currentUser === fromUser;
+
+        const mainText = isSelf
+            ? `Bạn → ${toUser}: ${message}`
+            : `${fromUser} → Bạn: ${message}`;
+
+        li.innerHTML = `
+            <div>${mainText}</div>
+            <div class="chat-meta">${sentAt || ""}</div>
+        `;
+
+        li.className = "chat-bubble " + (isSelf ? "chat-bubble-self" : "chat-bubble-other");
+
+        messagesList.appendChild(li);
+        messagesList.scrollTop = messagesList.scrollHeight;
     });
 
     connection.start().catch(err => console.error(err.toString()));
 
     document.getElementById("sendButton").addEventListener("click", () => {
-        const user = document.getElementById("userInput").value;
-        const message = document.getElementById("messageInput").value;
-        if (user && message) {
-            connection.invoke("SendMessage", user, message).catch(err => console.error(err.toString()));
-            document.getElementById("messageInput").value = "";
+        const recipientInput = document.getElementById("recipientInput");
+        const messageInput = document.getElementById("messageInput");
+        if (!recipientInput || !messageInput) return;
+
+        const fromUser = currentUser;
+        const toUser = recipientInput.value.trim();
+        const message = messageInput.value.trim();
+
+        if (fromUser && toUser && message) {
+            connection.invoke("SendMessage", fromUser, toUser, message)
+                .catch(err => console.error(err.toString()));
+            messageInput.value = "";
         }
     });
 
@@ -139,6 +168,15 @@ function initChatBox() {
     if (toggleBtn) {
         toggleBtn.addEventListener("click", () => {
             chatBox.classList.toggle("collapsed");
+        });
+    }
+
+    const launcher = document.getElementById("chatLauncher");
+    if (launcher) {
+        launcher.addEventListener("click", () => {
+            const isOpen = chatBox.classList.contains("chat-open");
+            chatBox.classList.toggle("chat-open", !isOpen);
+            chatBox.classList.toggle("chat-closed", isOpen);
         });
     }
 }
@@ -149,4 +187,95 @@ document.addEventListener("DOMContentLoaded", function () {
     if (document.getElementById('news-feed')) initNewsFeed();
     initSearchBox();
     initChatBox();
+    initInboxPage();
 });
+
+// Hộp thư đến: đánh dấu đã đọc / xóa, lưu phía client (localStorage)
+function initInboxPage() {
+    const inboxList = document.getElementById("inboxList");
+    if (!inboxList) return;
+
+    const items = Array.from(inboxList.querySelectorAll(".inbox-item"));
+    let unreadCount = 0;
+
+    items.forEach(item => {
+        const id = item.getAttribute("data-id");
+        if (!id) return;
+
+        const deleted = localStorage.getItem(`inbox_deleted_${id}`) === "1";
+        if (deleted) {
+            item.remove();
+            return;
+        }
+
+        const isRead = localStorage.getItem(`inbox_read_${id}`) === "1";
+        const dot = item.querySelector(".notification-dot");
+
+        if (isRead) {
+            item.classList.add("notification-read");
+            item.classList.remove("notification-unread");
+            if (dot) dot.classList.add("d-none");
+        } else {
+            item.classList.add("notification-unread");
+            item.classList.remove("notification-read");
+            if (dot) dot.classList.remove("d-none");
+            unreadCount++;
+        }
+    });
+
+    // Cập nhật badge đếm và chấm đỏ tiêu đề
+    const inboxCounter = document.getElementById("inboxCounter");
+    if (inboxCounter) {
+        const total = inboxList.querySelectorAll(".inbox-item").length;
+        inboxCounter.textContent = `${total} thông báo (chưa đọc: ${unreadCount})`;
+    }
+    const inboxUnreadDot = document.getElementById("inboxUnreadDot");
+    if (inboxUnreadDot) {
+        if (unreadCount > 0) inboxUnreadDot.classList.remove("d-none");
+        else inboxUnreadDot.classList.add("d-none");
+    }
+
+    // Gắn sự kiện nút
+    inboxList.addEventListener("click", function (e) {
+        const markBtn = e.target.closest(".btn-mark-read");
+        const deleteBtn = e.target.closest(".btn-delete-noti");
+
+        if (markBtn) {
+            const id = markBtn.getAttribute("data-id");
+            const item = inboxList.querySelector(`.inbox-item[data-id="${id}"]`);
+            if (!id || !item) return;
+
+            const isRead = item.classList.contains("notification-read");
+            if (isRead) {
+                // Bỏ đánh dấu đã đọc
+                item.classList.remove("notification-read");
+                item.classList.add("notification-unread");
+                localStorage.removeItem(`inbox_read_${id}`);
+                const dot = item.querySelector(".notification-dot");
+                if (dot) dot.classList.remove("d-none");
+            } else {
+                // Đánh dấu đã đọc
+                item.classList.add("notification-read");
+                item.classList.remove("notification-unread");
+                localStorage.setItem(`inbox_read_${id}`, "1");
+                const dot = item.querySelector(".notification-dot");
+                if (dot) dot.classList.add("d-none");
+            }
+
+            // Recalc
+            initInboxPage();
+        }
+
+        if (deleteBtn) {
+            const id = deleteBtn.getAttribute("data-id");
+            const item = inboxList.querySelector(`.inbox-item[data-id="${id}"]`);
+            if (!id || !item) return;
+
+            localStorage.setItem(`inbox_deleted_${id}`, "1");
+            item.remove();
+
+            // Recalc
+            initInboxPage();
+        }
+    });
+}

@@ -1,14 +1,51 @@
-<div id="chatBox" class="chat-box shadow">
-    <div class="chat-header bg-primary text-white d-flex justify-content-between align-items-center p-2">
-        <span><i class="bi bi-chat-dots me-2"></i>Chat</span>
-        <button id="toggleChat" class="btn btn-sm btn-light">−</button>
+<!-- Nút launcher tròn kiểu Messenger -->
+<button id="chatLauncher" class="chat-launcher btn btn-primary rounded-circle shadow-lg">
+    <i class="bi bi-messenger fs-4"></i>
+</button>
+
+<!-- Hộp chat kiểu Messenger -->
+<div id="chatBox" class="chat-box shadow-lg chat-closed">
+    <div class="chat-header d-flex align-items-center justify-content-between px-3 py-2">
+        <div class="d-flex align-items-center">
+            <div class="chat-avatar bg-primary text-white d-flex align-items-center justify-content-center rounded-circle me-2">
+                <i class="bi bi-robot"></i>
+            </div>
+            <div>
+                <div class="chat-title fw-semibold">MiniERP Assistant</div>
+                <div class="chat-status small text-success">Đang hoạt động</div>
+            </div>
+        </div>
+        <div class="d-flex align-items-center gap-1">
+            <button id="toggleChat" class="btn btn-sm btn-outline-secondary rounded-circle" title="Thu gọn">
+                <i class="bi bi-dash"></i>
+            </button>
+        </div>
     </div>
-    <div class="chat-body p-2">
-        <ul id="messagesList" class="list-group mb-2" style="max-height:200px; overflow-y:auto;"></ul>
-        <div class="input-group">
-            <input type="text" id="userInput" class="form-control" placeholder="Tên người dùng" />
-            <input type="text" id="messageInput" class="form-control" placeholder="Nhập tin nhắn..." />
-            <button id="sendButton" class="btn btn-primary"><i class="bi bi-send-fill"></i></button>
+
+    <div class="chat-body d-flex flex-column">
+        <ul id="messagesList" class="chat-messages mb-2"></ul>
+
+        <div class="chat-input-area border-top pt-2">
+            <div class="row g-1 align-items-center mb-2">
+                <div class="col-12">
+                    <label for="recipientInput" class="form-label form-label-sm mb-1 text-muted">
+                        Gửi tới (username)
+                    </label>
+                    <input type="text"
+                           id="recipientInput"
+                           class="form-control form-control-sm"
+                           placeholder="Nhập username người nhận" />
+                </div>
+            </div>
+            <div class="input-group input-group-sm">
+                <input type="text"
+                       id="messageInput"
+                       class="form-control"
+                       placeholder="Nhập tin nhắn..." />
+                <button id="sendButton" class="btn btn-primary">
+                    <i class="bi bi-send-fill"></i>
+                </button>
+            </div>
         </div>
     </div>
 </div>

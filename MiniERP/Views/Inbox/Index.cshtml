@@ -1,0 +1,101 @@
+@model IEnumerable<MiniERP.Models.AdminNotification>
+
+@{
+    ViewData["Title"] = "Hộp thư đến";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="h4 mb-0 d-flex align-items-center gap-2">
+            <i class="bi bi-inbox-fill text-primary"></i>
+            <span>Hộp thư đến từ quản trị</span>
+            <span id="inboxUnreadDot" class="notification-dot d-none"></span>
+        </h2>
+        <span class="badge bg-primary-subtle text-primary border border-primary-subtle" id="inboxCounter">
+            @Model.Count() thông báo
+        </span>
+    </div>
+
+    @if (User.IsInRole("Admin"))
+    {
+        @await Html.PartialAsync("_AdminNotificationPanel", new MiniERP.Models.AdminNotification())
+
+        if (TempData["InboxError"] is string err)
+        {
+            <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                <i class="bi bi-exclamation-octagon-fill me-2"></i>@err
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+        if (TempData["InboxSuccess"] is string msg)
+        {
+            <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+                <i class="bi bi-check-circle-fill me-2"></i>@msg
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+    }
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info d-flex align-items-center" role="alert">
+            <i class="bi bi-info-circle-fill me-2"></i>
+            <div>Hiện tại bạn chưa có thông báo nào từ quản trị.</div>
+        </div>
+    }
+    else
+    {
+        <div class="list-group shadow-sm" id="inboxList">
+            @foreach (var n in Model)
+            {
+                var type = (n.Type ?? "info").ToLowerInvariant();
+                var icon = type switch
+                {
+                    "warning" => "bi-exclamation-triangle-fill text-warning",
+                    "danger" => "bi-exclamation-octagon-fill text-danger",
+                    "success" => "bi-check-circle-fill text-success",
+                    _ => "bi-info-circle-fill text-primary"
+                };
+                <div class="list-group-item list-group-item-action flex-column align-items-start inbox-item"
+                     data-id="@n.Id">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1 d-flex align-items-center gap-2">
+                            <span class="notification-dot me-1 d-none"></span>
+                            <i class="bi @icon"></i>
+                            <span class="inbox-title">@(n.Title ?? "(Không có tiêu đề)")</span>
+                        </h5>
+                        <small class="text-muted">
+                            @(n.CreatedAt?.ToString("HH:mm dd/MM/yyyy") ?? "")
+                        </small>
+                    </div>
+                    <p class="mb-1 inbox-message">@n.Message</p>
+                    <div class="d-flex justify-content-between align-items-center mt-1">
+                        <small class="text-muted">
+                            Từ: @(n.From ?? "Admin hệ thống")
+                        </small>
+                        <div class="btn-group btn-group-sm" role="group">
+                            <button type="button"
+                                    class="btn btn-outline-primary btn-mark-read"
+                                    data-id="@n.Id">
+                                <i class="bi bi-check2-circle me-1"></i>Đã đọc
+                            </button>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <form asp-controller="Inbox" asp-action="DeleteNotification" method="post" class="d-inline">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="id" value="@n.Id" />
+                                    <button type="submit"
+                                            class="btn btn-outline-danger btn-delete-noti"
+                                            data-id="@n.Id">
+                                        <i class="bi bi-trash me-1"></i>Xóa
+                                    </button>
+                                </form>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+

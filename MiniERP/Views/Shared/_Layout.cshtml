@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MiniERP.styles.css" asp-append-version="true" />
 </head>
-<body>
+<body data-current-user="@User.Identity?.Name">
     <!-- Navbar -->
     <header>
         <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -32,10 +32,36 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item"><a class="nav-link text-dark" asp-controller="Home" asp-action="Index"><i class="bi bi-house-door me-1"></i>@T.GetString("Home")</a></li>
-                        <li class="nav-item"><a class="nav-link text-dark" asp-controller="Employee" asp-action="EmployeeManagement"><i class="bi bi-person-badge me-1"></i>@T.GetString("EmployeeManagement")</a></li>
-                        <li class="nav-item"><a class="nav-link text-dark" asp-controller="Setting" asp-action="Setting"><i class="bi bi-gear me-1"></i>@T.GetString("Settings")</a></li>
-                        <li class="nav-item"><a class="nav-link text-dark" asp-controller="Employee" asp-action="Profile"><i class="bi bi-person-lines-fill me-1"></i>@T.GetString("MyProfile")</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">
+                                <i class="bi bi-house-door me-1"></i>@T.GetString("Home")
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Employee" asp-action="EmployeeManagement">
+                                <i class="bi bi-person-badge me-1"></i>@T.GetString("EmployeeManagement")
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Setting" asp-action="Setting">
+                                <i class="bi bi-gear me-1"></i>@T.GetString("Settings")
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Employee" asp-action="Profile">
+                                <i class="bi bi-person-lines-fill me-1"></i>@T.GetString("MyProfile")
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Inbox" asp-action="Index">
+                                <i class="bi bi-inbox me-1"></i>Hộp thư đến
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Guide" asp-action="Guide">
+                                <i class="bi bi-question-circle me-1"></i>@T.GetString("Guide")
+                            </a>
+                        </li>
                     </ul>
                     
                     <!-- User menu -->

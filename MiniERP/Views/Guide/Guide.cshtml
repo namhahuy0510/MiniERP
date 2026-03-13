@@ -1,0 +1,122 @@
+@{
+    ViewData["Title"] = "Hướng dẫn sử dụng MiniERP";
+}
+
+<div class="container py-4">
+    <!-- Tiêu đề -->
+    <div class="text-center mb-4">
+        <h1 class="display-5 fw-bold text-primary">Hướng dẫn sử dụng MiniERP</h1>
+        <p class="text-muted">
+            Trang này giúp bạn làm quen nhanh với các chức năng chính: Trang chủ, Quản lý nhân viên, Chấm công và Tính lương.
+        </p>
+    </div>
+
+    <!-- Tổng quan + ảnh màn hình chính -->
+    <div class="row g-4 mb-4 align-items-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">1. Tổng quan giao diện</h5>
+                    <p class="card-text">
+                        Khi truy cập vào MiniERP, bạn sẽ thấy thanh menu trên cùng gồm:
+                    </p>
+                    <ul>
+                        <li><strong>Trang chủ</strong>: Tổng quan, giới thiệu hệ thống.</li>
+                        <li><strong>QL Nhân viên</strong>: Quản lý hồ sơ, thông tin nhân viên.</li>
+                        <li><strong>Lương</strong>: Xem bảng lương tháng được tính tự động từ chấm công.</li>
+                        <li><strong>Cài đặt / Hồ sơ cá nhân</strong>: Thiết lập tài khoản, cấu hình hệ thống.</li>
+                    </ul>
+                    <p class="card-text">
+                        Góc phải là khu vực đăng nhập / đăng xuất và hiển thị tên tài khoản khi bạn đã đăng nhập.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-white fw-semibold">
+                    Ảnh minh họa: Trang chủ
+                </div>
+                <div class="card-body text-center bg-white">
+                    <img src="~/Images/Trang chu.png"
+                         alt="Ảnh màn hình trang chủ MiniERP"
+                         class="img-fluid rounded shadow-sm border"
+                         style="max-height: 360px; object-fit: contain;" />
+                    <p class="text-muted small mt-2">
+                        * Nếu ảnh không hiển thị, hãy kiểm tra lại file trong thư mục <code>Images</code>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Các bước thao tác nhanh -->
+    <div class="row g-4 mb-4">
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">2. Đăng nhập & đăng xuất</h5>
+                    <ol class="card-text small">
+                        <li>Bấm nút <strong>Đăng nhập</strong> trên thanh menu.</li>
+                        <li>Nhập email và mật khẩu đã được cấp.</li>
+                        <li>Sau khi đăng nhập, góc phải sẽ hiển thị “Xin chào &lt;tên tài khoản&gt;”.</li>
+                        <li>Để thoát, bấm menu cạnh tên tài khoản và chọn <strong>Đăng xuất</strong>.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">3. Quản lý nhân viên</h5>
+                    <ol class="card-text small">
+                        <li>Vào mục <strong>QL Nhân viên</strong> trên thanh menu.</li>
+                        <li>Xem danh sách nhân viên và sử dụng ô <strong>Tìm kiếm</strong> để lọc theo tên, vị trí.</li>
+                        <li>Nếu bạn là <strong>Admin</strong>, có thể:
+                            <ul>
+                                <li>Thêm nhân viên mới (họ tên, ngày sinh, vị trí, lương…)</li>
+                                <li>Sửa thông tin nhân viên</li>
+                                <li>Xóa nhân viên khi nghỉ việc</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">4. Tính lương hàng tháng</h5>
+                    <ol class="card-text small">
+                        <li>Chọn mục <strong>Lương</strong> trên thanh menu.</li>
+                        <li>Chọn <strong>Tháng</strong> và <strong>Năm</strong> cần xem.</li>
+                        <li>Bấm nút <strong>Xem bảng lương</strong>.</li>
+                        <li>Hệ thống tự động tính lương theo công thức:
+                            <br />
+                            <code>Lương thực lĩnh = Lương cơ bản × (Số ngày công / 22)</code>
+                        </li>
+                        <li>Bên dưới hiển thị <strong>Tổng quỹ lương</strong> của tháng đó.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gợi ý & hỗ trợ -->
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body">
+            <h5 class="card-title fw-bold">5. Gợi ý sử dụng hiệu quả</h5>
+            <ul class="small mb-2">
+                <li>Đảm bảo thông tin lương và ngày vào làm của nhân viên luôn được cập nhật đầy đủ.</li>
+                <li>Chấm công thường xuyên để dữ liệu lương được tính chính xác.</li>
+                <li>Sử dụng tab Lương để đối chiếu với bộ phận kế toán mỗi kỳ trả lương.</li>
+            </ul>
+            <p class="small text-muted mb-0">
+                Khi gặp lỗi hoặc cần nâng cấp tính năng, hãy chụp màn hình, ghi lại thao tác và thông báo lỗi (nếu có),
+                sau đó gửi cho quản trị hệ thống hoặc lập trình viên phụ trách.
+            </p>
+        </div>
+    </div>
+</div>
